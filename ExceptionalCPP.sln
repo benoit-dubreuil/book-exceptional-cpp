@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CaseInsensitiveStrings", "C
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MaximallyReusableGenericContainers", "MaximallyReusableGenericContainers\MaximallyReusableGenericContainers.vcxproj", "{0410D682-B799-4339-8813-1CE7A881989D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Exception-Safety_Issues_and_Techniques", "Exception-Safety_Issues_and_Techniques\Exception-Safety_Issues_and_Techniques.vcxproj", "{43CAAAE4-1537-4D1A-AC3F-6306B627F4E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{0410D682-B799-4339-8813-1CE7A881989D}.Release|x64.Build.0 = Release|x64
 		{0410D682-B799-4339-8813-1CE7A881989D}.Release|x86.ActiveCfg = Release|Win32
 		{0410D682-B799-4339-8813-1CE7A881989D}.Release|x86.Build.0 = Release|Win32
+		{43CAAAE4-1537-4D1A-AC3F-6306B627F4E4}.Debug|x64.ActiveCfg = Debug|x64
+		{43CAAAE4-1537-4D1A-AC3F-6306B627F4E4}.Debug|x64.Build.0 = Debug|x64
+		{43CAAAE4-1537-4D1A-AC3F-6306B627F4E4}.Debug|x86.ActiveCfg = Debug|Win32
+		{43CAAAE4-1537-4D1A-AC3F-6306B627F4E4}.Debug|x86.Build.0 = Debug|Win32
+		{43CAAAE4-1537-4D1A-AC3F-6306B627F4E4}.Release|x64.ActiveCfg = Release|x64
+		{43CAAAE4-1537-4D1A-AC3F-6306B627F4E4}.Release|x64.Build.0 = Release|x64
+		{43CAAAE4-1537-4D1A-AC3F-6306B627F4E4}.Release|x86.ActiveCfg = Release|Win32
+		{43CAAAE4-1537-4D1A-AC3F-6306B627F4E4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
