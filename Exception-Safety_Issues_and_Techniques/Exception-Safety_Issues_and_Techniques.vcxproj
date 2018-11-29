@@ -120,6 +120,7 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MemoryUtils.h" />
     <ClInclude Include="Stack\Stack.h" />
     <ClInclude Include="Stack\StackArrayImpl.h" />
     <ClInclude Include="Stack\StackContainer.h" />

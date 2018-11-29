@@ -19,7 +19,7 @@ public:
 	}
 
 	template <class ForwardIterator>
-	void placementDestruct(ForwardIterator first, ForwardIterator last)
+	static void placementDestruct(ForwardIterator first, ForwardIterator last)
 	{
 		while (first != last)
 		{

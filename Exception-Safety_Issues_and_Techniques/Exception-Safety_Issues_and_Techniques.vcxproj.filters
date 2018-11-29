@@ -32,5 +32,8 @@
     <ClInclude Include="Stack\StackContainer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MemoryUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,18 +6,27 @@
 template <typename T>
 class StackArrayImpl
 {
-	size_t m_size;
-	size_t m_usedOffset;
-	T* m_data;
-
 public:
-	explicit StackArrayImpl(size_t size = 0) : m_size(size), m_usedOffset(), m_data(size ? operator new(sizeof(T) * size) : nullptr)
+
+	size_t size;
+	size_t usedOffset;
+	T* data;
+
+	explicit StackArrayImpl(size_t size = 0) : size(size), usedOffset(), data(size ? static_cast<T*>(operator new(sizeof(T) * size)) : nullptr)
+	{
+	}
+
+	// Does not actually copy the data, only reserve enough memory and set the properties.
+	explicit StackArrayImpl(const StackArrayImpl& other) : StackArrayImpl(other.size)
 	{
 	}
 
 	~StackArrayImpl()
 	{
-		MemoryUtils::placementDestruct(m_data, m_data + m_usedOffset);
-		operator delete(m_data);
+		MemoryUtils::placementDestruct(data, data + usedOffset);
+		operator delete(data);
 	}
+
+private:
+	StackArrayImpl& operator=(const StackArrayImpl&) = delete;
 };
