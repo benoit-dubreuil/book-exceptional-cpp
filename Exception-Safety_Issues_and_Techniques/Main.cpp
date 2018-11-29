@@ -52,7 +52,18 @@ int main()
 
 	std::cout << std::endl;
 
-	Stack<int> stack;
+	Stack<int> stack1{ 5 };
+	Stack<int> stack2{ 7 };
+	stack1 = stack2;
+
+	Stack<int> stack3{ 3 };
+
+	std::cout << "Stack 1 (reserved size) : " << stack1.getReservedSize() << std::endl;
+	std::cout << "Stack 2 (reserved size) : " << stack2.getReservedSize() << std::endl;
+	
+	stack3 = std::move(stack1);
+
+	std::cout << "Stack 3 (reserved size) : " << stack3.getReservedSize() << std::endl;
 
 	return 0;
 }
