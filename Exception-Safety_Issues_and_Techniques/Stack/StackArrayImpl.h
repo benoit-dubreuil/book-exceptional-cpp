@@ -21,10 +21,24 @@ public:
 	{
 	}
 
+	StackArrayImpl(StackArrayImpl&& other) : StackArrayImpl()
+	{
+		swap(*this, other);
+	}
+
 	~StackArrayImpl()
 	{
 		MemoryUtils::placementDestruct(data, data + usedOffset);
 		operator delete(data);
+	}
+
+	friend void swap(StackArrayImpl& lhs, StackArrayImpl& rhs) noexcept
+	{
+		using std::swap;
+
+		swap(lhs.size, rhs.size);
+		swap(lhs.usedOffset, rhs.usedOffset);
+		swap(lhs.data, rhs.data);
 	}
 
 private:
