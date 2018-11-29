@@ -58,12 +58,33 @@ int main()
 
 	Stack<int> stack3{ 3 };
 
-	std::cout << "Stack 1 (reserved size) : " << stack1.getReservedSize() << std::endl;
-	std::cout << "Stack 2 (reserved size) : " << stack2.getReservedSize() << std::endl;
+	std::cout << "Stack 1 (size) : " << stack1.size() << std::endl;
+	std::cout << "Stack 2 (size) : " << stack2.size() << std::endl;
 	
 	stack3 = std::move(stack1);
 
-	std::cout << "Stack 3 (reserved size) : " << stack3.getReservedSize() << std::endl;
+	std::cout << "Stack 3 (size) : " << stack3.size() << std::endl;
+
+	std::cout << std::endl;
+
+	stack3 = Stack<int>(2);
+	stack3.push(42);
+
+	std::cout << "Stack 3 (size) : " << stack3.size() << std::endl;
+	std::cout << "Stack 3 (count) : " << stack3.count() << std::endl;
+	std::cout << "Stack 3 (top) : " << stack3.top() << std::endl << std::endl;
+
+	stack3.push(-3);
+
+	std::cout << "Stack 3 (size) : " << stack3.size() << std::endl;
+	std::cout << "Stack 3 (count) : " << stack3.count() << std::endl;
+	std::cout << "Stack 3 (top) : " << stack3.top() << std::endl << std::endl;
+
+	stack3.push(69);
+
+	std::cout << "Stack 3 (size) : " << stack3.size() << std::endl;
+	std::cout << "Stack 3 (count) : " << stack3.count() << std::endl;
+	std::cout << "Stack 3 (top) : " << stack3.top() << std::endl;
 
 	return 0;
 }

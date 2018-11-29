@@ -7,7 +7,7 @@ class StackContainer
 {
 	Impl m_impl;
 
-public :
+public:
 	explicit StackContainer() = default;
 
 	template <typename... TImplArgs>
@@ -43,13 +43,67 @@ public :
 		swap(lhs.m_impl, rhs.m_impl);
 	}
 
-	size_t getReservedSize() const
+	void push(const T& element)
+	{
+		if (m_impl.usedOffset == m_impl.size)
+		{
+			StackContainer tmp(increaseSize(m_impl.size));
+
+			while (tmp.count() < m_impl.usedOffset)
+			{
+				tmp.push(m_impl.data[tmp.count()]);
+			}
+
+			tmp.push(element);
+
+			using std::swap;
+			swap(m_impl, tmp.m_impl);
+		}
+		else
+		{
+			MemoryUtils::placementNew(m_impl.data + m_impl.usedOffset, element);
+			++m_impl.usedOffset;
+		}
+	}
+
+	T& top()
+	{
+		if (m_impl.usedOffset == 0)
+		{
+			throw "Empty stack";
+		}
+
+		return m_impl.data[m_impl.usedOffset - 1];
+	}
+
+	void pop()
+	{
+		if (m_impl.usedOffset == 0)
+		{
+			throw "Pop from empty stack";
+		}
+		else
+		{
+			--m_impl.usedOffset;
+			MemoryUtils::placementDestruct(m_impl.data + m_impl.usedOffset);
+		}
+	}
+
+	// The reserved memory
+	size_t size() const
 	{
 		return m_impl.size;
 	}
 
-	size_t getUsedSize() const
+	// The actual element count
+	size_t count() const
 	{
 		return m_impl.usedOffset;
+	}
+
+private:
+	static size_t increaseSize(size_t size)
+	{
+		return size * 2 + 1;
 	}
 };
