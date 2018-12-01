@@ -124,7 +124,6 @@
     <ClInclude Include="Stack\Stack.h" />
     <ClInclude Include="Stack\StackArrayImpl.h" />
     <ClInclude Include="Stack\StackContainer.h" />
-    <ClInclude Include="Stack\StackLinkedImpl.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

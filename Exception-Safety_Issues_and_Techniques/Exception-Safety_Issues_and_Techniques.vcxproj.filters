@@ -26,9 +26,6 @@
     <ClInclude Include="Stack\StackArrayImpl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Stack\StackLinkedImpl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Stack\StackContainer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
