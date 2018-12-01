@@ -47,6 +47,7 @@ public:
 	{
 		if (m_impl.usedOffset == m_impl.size)
 		{
+			// Only works if the Impl's constructor takes a size_t argument... Need to reconsider the conception for this.
 			StackContainer tmp(increaseSize(m_impl.size));
 
 			while (tmp.count() < m_impl.usedOffset)
