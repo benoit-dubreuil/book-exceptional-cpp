@@ -2,16 +2,19 @@
 
 #include "../MemoryUtils.h"
 
+// The global operator delete, or an allocator's class deallocate function, must not throw.
+// T's desctrutor must not throw.
+// T must have a copy constructor.
 template <typename T, typename Impl>
 class StackContainer
 {
 	Impl m_impl;
 
 public:
-	explicit StackContainer() = default;
+	explicit StackContainer() noexcept = default;
 
 	template <typename... TImplArgs>
-	explicit StackContainer(TImplArgs... implArgs) : m_impl(implArgs...)
+	explicit StackContainer(TImplArgs... implArgs) noexcept : m_impl(implArgs...)
 	{
 	}
 
@@ -24,7 +27,7 @@ public:
 		}
 	}
 
-	StackContainer(StackContainer&& other) : StackContainer()
+	StackContainer(StackContainer&& other) noexcept : StackContainer()
 	{
 		swap(*this, other);
 	}
@@ -91,19 +94,19 @@ public:
 	}
 
 	// The reserved memory
-	size_t size() const
+	size_t size() const noexcept
 	{
 		return m_impl.size;
 	}
 
 	// The actual element count
-	size_t count() const
+	size_t count() const noexcept
 	{
 		return m_impl.usedOffset;
 	}
 
 private:
-	static size_t increaseSize(size_t size)
+	static size_t increaseSize(size_t size) noexcept
 	{
 		return size * 2 + 1;
 	}

@@ -12,21 +12,21 @@ public:
 	size_t usedOffset;
 	T* data;
 
-	explicit StackArrayImpl(size_t size = 0) : size(size), usedOffset(), data(size ? static_cast<T*>(operator new(sizeof(T) * size)) : nullptr)
+	explicit StackArrayImpl(size_t size = 0) noexcept : size(size), usedOffset(), data(size ? static_cast<T*>(operator new(sizeof(T) * size)) : nullptr)
 	{
 	}
 
 	// Does not actually copy the data, only reserve enough memory and set the properties.
-	explicit StackArrayImpl(const StackArrayImpl& other) : StackArrayImpl(other.size)
+	explicit StackArrayImpl(const StackArrayImpl& other) noexcept : StackArrayImpl(other.size)
 	{
 	}
 
-	StackArrayImpl(StackArrayImpl&& other) : StackArrayImpl()
+	StackArrayImpl(StackArrayImpl&& other) noexcept : StackArrayImpl()
 	{
 		swap(*this, other);
 	}
 
-	~StackArrayImpl()
+	~StackArrayImpl() noexcept
 	{
 		MemoryUtils::placementDestruct(data, data + usedOffset);
 		operator delete(data);
