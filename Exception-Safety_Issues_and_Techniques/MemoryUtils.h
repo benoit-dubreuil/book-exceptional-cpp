@@ -1,5 +1,7 @@
 #pragma once
 
+#include <utility>
+
 class MemoryUtils final
 {
 	MemoryUtils() = delete;
@@ -7,9 +9,9 @@ class MemoryUtils final
 public:
 	
 	template <typename T, typename... TArgs>
-	static void placementNew(T* const ptr, const TArgs&... args)
+	static void placementNew(T* const ptr, TArgs&&... args)
 	{
-		new (ptr) T(args...);
+		new (ptr) T(std::forward<TArgs>(args)...);
 	}
 
 	template <typename T>
@@ -18,7 +20,7 @@ public:
 		ptr->~T();
 	}
 
-	template <class ForwardIterator>
+	template <typename ForwardIterator>
 	static void placementDestruct(ForwardIterator first, ForwardIterator last)
 	{
 		while (first != last)
