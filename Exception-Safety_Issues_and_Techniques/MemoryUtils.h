@@ -20,6 +20,12 @@ public:
 		return static_cast<T*>(operator new(sizeof(T) * size));
 	}
 
+	template<typename T>
+	static void deallocate(T* ptr)
+	{
+		operator delete(ptr);
+	}
+
 	template <typename T, typename... TArgs>
 	static void placementNew(T* const ptr, TArgs&&... args)
 	{

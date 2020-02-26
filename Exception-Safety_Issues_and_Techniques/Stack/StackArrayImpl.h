@@ -12,7 +12,7 @@ public:
 	size_t usedOffset;
 	T* data;
 
-	explicit StackArrayImpl(size_t size = 0) noexcept : size(size), usedOffset(), data(size ? static_cast<T*>(operator new(sizeof(T) * size)) : nullptr)
+	explicit StackArrayImpl(size_t size = 0) noexcept : size(size), usedOffset(), data(size ? MemoryUtils::allocate<T>(size) : nullptr)
 	{
 	}
 
@@ -29,7 +29,7 @@ public:
 	~StackArrayImpl() noexcept
 	{
 		MemoryUtils::placementDestruct(data, data + usedOffset);
-		operator delete(data);
+		MemoryUtils::deallocate(data);
 	}
 
 	friend void swap(StackArrayImpl& lhs, StackArrayImpl& rhs) noexcept
