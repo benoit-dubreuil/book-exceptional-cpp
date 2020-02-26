@@ -8,6 +8,18 @@ class MemoryUtils final
 
 public:
 	
+	template<typename T>
+	static T* allocate()
+	{
+		return static_cast<T*>(operator new(sizeof(T)));
+	}
+
+	template<typename T, typename size_t = std::size_t>
+	static T* allocate(size_t size)
+	{
+		return static_cast<T*>(operator new(sizeof(T) * size));
+	}
+
 	template <typename T, typename... TArgs>
 	static void placementNew(T* const ptr, TArgs&&... args)
 	{
